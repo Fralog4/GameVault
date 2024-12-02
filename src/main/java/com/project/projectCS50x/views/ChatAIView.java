@@ -38,12 +38,6 @@ public class ChatAIView extends VerticalLayout {
         add(messageHistoryLayout);
         messageHistoryLayout.setWidthFull();
         messageHistoryLayout.setSpacing(true);
-
-        Button testButton= new Button("Test");
-        testButton.getElement().setAttribute("class", "btn btn-dark");  //bootstrap test
-        add(testButton);
-
-
     }
 
 
