@@ -24,3 +24,4 @@ public class Videogame {
     @Enumerated(EnumType.STRING)
     private Gamestatus gamestatus;
 }
+

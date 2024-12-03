@@ -1,6 +1,5 @@
 package com.project.projectCS50x.views;
 
-import com.project.projectCS50x.controller.ChatController;
 import com.project.projectCS50x.controller.VideogameController;
 import com.project.projectCS50x.model.GameGenre;
 import com.project.projectCS50x.model.Gamestatus;
@@ -9,36 +8,34 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.select.Select;
-import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
-
+import com.vaadin.flow.component.textfield.IntegerField;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
 
-@Route("")
-public class HomeView extends VerticalLayout {
+@Route("/gamevault/uploadvideogame")
+public class SaveGameView  extends VerticalLayout {
+
 
     private final VideogameController videogameController;
-    private final ChatController chatController;
 
-    public HomeView(VideogameController videogameController,
-                    ChatController chatController) {
+    public SaveGameView(VideogameController videogameController) {
         this.videogameController = videogameController;
-        this.chatController = chatController;
-
-        add(new H1("Welcome to your new application"));
-        add(new Paragraph("This is the home view"));
 
         FormLayout formLayout = new FormLayout();
         TextField titleField = new TextField("Title");
         titleField.getElement().setAttribute("class", "form-control");
+        Button goBackToHome = new Button("Back to Home");
+        goBackToHome.getElement().setAttribute("class", "btn btn-dark");
+        goBackToHome.addClickListener(e -> {
+            UI.getCurrent().navigate("/gamevault/home");
+        });
+        add(goBackToHome);
 
         Select<String> field = new Select<>();
         field.setLabel("Game Genre");
@@ -62,9 +59,9 @@ public class HomeView extends VerticalLayout {
 
         TextField platformField = new TextField("Platform");
         platformField.getElement().setAttribute("class", "form-control");
-        IntegerField personalRating= new IntegerField("Personal Rating");
+        IntegerField personalRating = new IntegerField("Personal Rating");
         personalRating.getElement().setAttribute("class", "form-control");
-        IntegerField id= new IntegerField("Id");
+        IntegerField id = new IntegerField("Id");
         id.getElement().setAttribute("class", "form-control");
         LocalDate now = LocalDate.now(ZoneId.systemDefault());
 
@@ -80,7 +77,7 @@ public class HomeView extends VerticalLayout {
                 .setRequiredErrorMessage("Field is required")
                 .setMaxErrorMessage("Too late, choose another date"));
 
-        formLayout.add(titleField,platformField, personalRating, id, field, playedDate);
+        formLayout.add(titleField, platformField, personalRating, id, field, playedDate);
         Button saveButton = new Button("Save Videogame");
         saveButton.getElement().setAttribute("class", "btn btn-dark");
         saveButton.getElement().setAttribute("style", "margin-right: 10px");
@@ -96,27 +93,9 @@ public class HomeView extends VerticalLayout {
             videogame.setGamestatus(Gamestatus.valueOf(gameStatus.getValue()));
 
             videogameController.saveVideogame(videogame);
-            UI.getCurrent().navigate("/gamevault/videogames");
-
+            //refresh the list
         });
+        add(formLayout, saveButton);
 
-        Button goToCollectionButton = new Button("Go to Collection");
-        goToCollectionButton.getElement().setAttribute("class", "btn btn-dark");
-        goToCollectionButton.getElement().setAttribute("style", "margin-right: 10px");
-
-        goToCollectionButton.addClickListener(e -> {
-            UI.getCurrent().navigate("/gamevault/videogames");
-        });
-        formLayout.add(goToCollectionButton);
-
-
-        Button chatButton = new Button("Chat with the AI Bot");
-        chatButton.getElement().setAttribute("class", "btn btn-warning");
-        chatButton.addClickListener(e -> {
-            UI.getCurrent().navigate("/ai/generate");
-        });
-        formLayout.add(saveButton, chatButton);
-
-        add(formLayout);
-}
+    }
 }
