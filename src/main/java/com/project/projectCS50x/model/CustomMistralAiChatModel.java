@@ -1,46 +1,17 @@
-/*
- * Copyright 2023-2024 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.project.projectCS50x.model;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.contextpropagation.ObservationThreadLocalAccessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ai.mistralai.MistralAiChatOptions;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.ToolResponseMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.metadata.ChatGenerationMetadata;
 import org.springframework.ai.chat.metadata.ChatResponseMetadata;
-import org.springframework.ai.chat.model.AbstractToolCallSupport;
-import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.chat.model.Generation;
-import org.springframework.ai.chat.model.MessageAggregator;
+import org.springframework.ai.chat.model.*;
 import org.springframework.ai.chat.observation.ChatModelObservationContext;
 import org.springframework.ai.chat.observation.ChatModelObservationConvention;
 import org.springframework.ai.chat.observation.ChatModelObservationDocumentation;
@@ -48,6 +19,7 @@ import org.springframework.ai.chat.observation.DefaultChatModelObservationConven
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.ChatOptionsBuilder;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.mistralai.MistralAiChatOptions;
 import org.springframework.ai.mistralai.api.MistralAiApi;
 import org.springframework.ai.mistralai.api.MistralAiApi.ChatCompletion;
 import org.springframework.ai.mistralai.api.MistralAiApi.ChatCompletion.Choice;
@@ -64,46 +36,39 @@ import org.springframework.ai.model.function.FunctionCallingOptions;
 import org.springframework.ai.retry.RetryUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-/**
- * Represents a Mistral AI Chat Model.
- *
- * @author Ricken Bazolo
- * @author Christian Tzolov
- * @author Grogdunn
- * @author Thomas Vitale
- * @author luocongqiu
- * @since 1.0.0
- */
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+
 public class CustomMistralAiChatModel extends AbstractToolCallSupport implements ChatModel {
 
     private static final ChatModelObservationConvention DEFAULT_OBSERVATION_CONVENTION = new DefaultChatModelObservationConvention();
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    /**
-     * The default options used for the chat completion requests.
-     */
+
     private final MistralAiChatOptions defaultOptions;
 
-    /**
-     * Low-level access to the OpenAI API.
-     */
+
     private final MistralAiApi mistralAiApi;
 
     private final RetryTemplate retryTemplate;
 
-    /**
-     * Observation registry used for instrumentation.
-     */
+
     private final ObservationRegistry observationRegistry;
 
-    /**
-     * Conventions to use for generating observations.
-     */
+
     private ChatModelObservationConvention observationConvention = DEFAULT_OBSERVATION_CONVENTION;
+
 
     public CustomMistralAiChatModel(MistralAiApi mistralAiApi) {
         this(mistralAiApi,
@@ -185,7 +150,7 @@ public class CustomMistralAiChatModel extends AbstractToolCallSupport implements
                     List<Generation> generations = chatCompletion.choices().stream().map(choice -> {
                         // @formatter:off
                         Map<String, Object> metadata = Map.of(
-                                "id", chatCompletion.id() != null ? chatCompletion.id() : "",
+                                "id", "ag:af42206d:20241204:untitled-agent:a3c41280",
                                 "index", choice.index(),
                                 "role", choice.message().role() != null ? choice.message().role().name() : "",
                                 "finishReason", choice.finishReason() != null ? choice.finishReason().name() : "");
@@ -250,8 +215,8 @@ public class CustomMistralAiChatModel extends AbstractToolCallSupport implements
                                     roleMap.putIfAbsent(id, choice.message().role().name());
                                 }
                                 Map<String, Object> metadata = Map.of(
-                                        "id", chatCompletion2.id(),
-                                        "role", roleMap.getOrDefault(id, ""),
+                                        "id", "ag:af42206d:20241204:untitled-agent:a3c41280",
+                                        "role", roleMap.getOrDefault(id, "assistant"),
                                         "index", choice.index(),
                                         "finishReason", choice.finishReason() != null ? choice.finishReason().name() : "");
                                 return buildGeneration(choice, metadata);
@@ -316,6 +281,8 @@ public class CustomMistralAiChatModel extends AbstractToolCallSupport implements
 
         return new ChatCompletion(chunk.id(), "chat.completion", chunk.created(), chunk.model(), choices, null);
     }
+
+
 
     /**
      * Accessible for testing.
