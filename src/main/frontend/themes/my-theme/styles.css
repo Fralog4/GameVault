@@ -1,0 +1,10 @@
+.app-layout {
+    background-image: url('img/GameVaultTheme.png');
+    background-size: contain;
+    background-size: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+}

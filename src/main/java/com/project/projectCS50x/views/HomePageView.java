@@ -23,11 +23,23 @@ public class HomePageView extends AppLayout {
 
     public HomePageView(VideogameController videogameController,
                         ChatController chatController) {
+        this.getElement().setAttribute("theme", "dark")
+                .setAttribute("class", "app-layout");
+//        this.getElement().getStyle().set("background-image","url('img/GameVault.png')");
+
+
         this.videogameController = videogameController;
         this.chatController = chatController;
 
         DrawerToggle toggle = new DrawerToggle();
         toggle.setThemeName("navigation-drawer-toggle");
+//        contentDiv.getStyle().set("background-image", "url('my-background.jpg')");
+//        Div home = new Div();
+//        home.getStyle().set("background-image",
+//                "url('https://www.rollingstone.com/wp-content/uploads/2024/04/pip-ft.jpg?w=1600&h=900&crop=1')");
+//        addToDrawer(home);
+
+
 
         H1 title = new H1("Game Vault Home Page");
         title.getStyle().set("font-size", "var(--lumo-font-size-l)")

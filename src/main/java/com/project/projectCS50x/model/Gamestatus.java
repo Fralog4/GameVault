@@ -5,5 +5,5 @@ public enum Gamestatus {
     IN_PROGRESS,
     DROPPED,
     REPLAYED,
-    BACKLOGGED
+    PLANNED
 }
