@@ -6,6 +6,7 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.Scroller;
@@ -25,7 +26,8 @@ public class HomePageView extends AppLayout {
                         ChatController chatController) {
         this.getElement().setAttribute("theme", "dark")
                 .setAttribute("class", "app-layout");
-//        this.getElement().getStyle().set("background-image","url('img/GameVault.png')");
+        this.getElement().getStyle().setCursor("pointer");
+
 
 
         this.videogameController = videogameController;
@@ -41,7 +43,7 @@ public class HomePageView extends AppLayout {
 
 
 
-        H1 title = new H1("Game Vault Home Page");
+        H1 title = new H1("Welcome to the Home Page!");
         title.getStyle().set("font-size", "var(--lumo-font-size-l)")
                 .set("font-weight", "bold").set("margin", "0 10px 0 0");
 
