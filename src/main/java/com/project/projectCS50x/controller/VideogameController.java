@@ -13,7 +13,7 @@ import java.util.List;
 public class VideogameController {
     private final VideogameService videogameService;
 
-    @GetMapping("/videogames")
+    //@GetMapping("/videogames")
     public List<Videogame> getAllVideogames() {
         return videogameService.getAllVideogames();
     }

@@ -55,5 +55,21 @@ vaadin-message::part(message){
     padding: 10px 50px;
     margin: 8px 0;
     font-weight: bold;
+}
 
+#outlet{
+    background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('img/VideoGameList.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+}
+vaadin-grid::part(row){
+    font-weight: bold;
+    color: #c13500;
+}
+
+.videogameGrid {
+    min-height: 90vh;
+    opacity: 0.5;
 }

@@ -5,7 +5,6 @@ import com.project.projectCS50x.model.Videogame;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;
 
@@ -15,6 +14,7 @@ public class VideogamesView extends Div {
     private final VideogameController videogameController;
     public VideogamesView(VideogameController videogameController) {
         this.videogameController = videogameController;
+        this.getElement().setAttribute("class", "videogamesView");
         Grid<Videogame> videogameGrid = new Grid<>(Videogame.class, false); // false for read-only>
         videogameGrid.addColumn(Videogame::getTitle).setHeader("Title");
         videogameGrid.addColumn(Videogame::getGenre).setHeader("Genre");
@@ -27,10 +27,11 @@ public class VideogamesView extends Div {
         //videogameGrid.addColumn(Videogame::getImage).setHeader("Image");
 
         videogameGrid.setItems(videogameController.getAllVideogames());
-        videogameGrid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
         videogameGrid.getElement().getStyle().set("border-collapse", "collapse");
         videogameGrid.getElement().getStyle().set("border", "1px solid #ccc");
+        videogameGrid.getElement().getStyle().set("background-image", "linear-gradient(to bottom, #f5f5f5, #e5e5e5)");
 
+        videogameGrid.getElement().setAttribute("class", "videogameGrid");
         add(videogameGrid);
 
 
