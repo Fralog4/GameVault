@@ -67,7 +67,7 @@ public class HomePageView extends AppLayout {
 
         dashboardGames.getElement().setAttribute("theme", "primary");
 
-        SideNavItem chat = new SideNavItem("Chat",
+        SideNavItem chat = new SideNavItem("Victor's Chat",
                 ChatAIView.class, VaadinIcon.CHAT.create());
         chat.getElement().setAttribute("theme", "primary");
 

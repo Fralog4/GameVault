@@ -36,16 +36,13 @@ public class ChatAIView extends Div {
     public ChatAIView(ChatController chatController, MistralAIService mistralAIService) {
         this.chatController = chatController;
         this.mistralAIService = mistralAIService;
-        add(new H1("Welcome to our AI Powered Chat!"));
+        add(new H1("Hey I'm Victor, welcome my friend!"));
         messageInput = new MessageInput(event -> sendMessage(event.getValue()));
         messageInput.getElement().setAttribute("class", "form-control");
         add(messageInput);
-//        add(messageHistoryLayout);
         add(messageList);
         messageList.setWidthFull();
 
-//        messageHistoryLayout.setWidthFull();
-//        messageHistoryLayout.setSpacing(true);
         Button goBackToHome = new Button("Back to Home");
         goBackToHome.getElement().setAttribute("class", "btn btn-primary");
         goBackToHome.addClickListener(e -> {
@@ -67,18 +64,16 @@ public class ChatAIView extends Div {
                     .toInstant(ZoneOffset.UTC);
             MessageListItem message1 = new MessageListItem(
                     message,
-                    yesterday, "User");
+                    yesterday, "You");
             message1.setUserColorIndex(1);
+            message1.setUserImage("https://cdn2.steamgriddb.com/icon/bce2e8945c21216d6a3e28aed4569e98.ico");
 
-            // Extract the AI response text from the JSON response
-            String aiResponseText = chatController.generate(message).toString();
-            int startIndex = aiResponseText.indexOf("=") + 1;
-            int endIndex = aiResponseText.lastIndexOf("}");
-            String aiMessage = aiResponseText.substring(startIndex, endIndex);
+            String aiResponseText = chatController.generateWithPrompt(message);
 
-            MessageListItem message2 = new MessageListItem(aiMessage,
-                    fiftyMinsAgo, "Mistral");
+            MessageListItem message2 = new MessageListItem(aiResponseText,
+                    fiftyMinsAgo, "Victor");
             message2.setUserColorIndex(2);
+            message2.setUserImage("https://ih1.redbubble.net/image.3234664643.0408/raf,360x360,075,t,fafafa:ca443f4786.jpg");
             list.setItems(Arrays.asList(message1, message2));
             add(list);
         } else {
