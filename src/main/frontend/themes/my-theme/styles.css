@@ -1,8 +1,7 @@
-/* Ensure full screen height */
 .app-layout {
     min-height: 100vh;
     background-image: url('img/GameVaultTheme.png');
-    background-size: cover;  /* Ensures image covers the entire area */
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     display: flex;
@@ -10,4 +9,51 @@
     align-items: center;
     justify-content: center;
     padding: 20px 30px 10px;
+}
+
+.homeChat{
+    background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('img/wasteLand.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+
+}
+
+.form-control{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 30%;
+
+    border: none;
+    padding: 10px 50px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-weight: bold;
+
+}
+
+.title{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+vaadin-button::part(label){
+    color: orange;
+    font-weight: bold;
+    button-color: orange;
+}
+vaadin-button{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+vaadin-message::part(message){
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 10px 50px;
+    margin: 8px 0;
+    font-weight: bold;
+
 }

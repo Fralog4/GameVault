@@ -2,6 +2,7 @@ package com.project.projectCS50x.views;
 
 import com.project.projectCS50x.controller.ChatController;
 import com.project.projectCS50x.service.MistralAIService;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
@@ -9,25 +10,22 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.messages.MessageInput;
 import com.vaadin.flow.component.messages.MessageList;
 import com.vaadin.flow.component.messages.MessageListItem;
+import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.router.Route;
-import org.springframework.messaging.Message;
+import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.lumo.Lumo;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 @Route("/gamevault/ai/generate")
 public class ChatAIView extends Div {
 
     private final ChatController chatController;
-    private String channelId;
     private final MistralAIService mistralAIService;
-    private final List<Message> receivedMessages = new ArrayList<>();
     private final MessageInput messageInput;
-    private final List<Div> messageHistory = new ArrayList<>();
     private final MessageList messageList = new MessageList();
 
 
@@ -36,15 +34,20 @@ public class ChatAIView extends Div {
     public ChatAIView(ChatController chatController, MistralAIService mistralAIService) {
         this.chatController = chatController;
         this.mistralAIService = mistralAIService;
+
+        this.getElement().setAttribute("class", "homeChat");
+
         add(new H1("Hey I'm Victor, welcome my friend!"));
+
         messageInput = new MessageInput(event -> sendMessage(event.getValue()));
         messageInput.getElement().setAttribute("class", "form-control");
         add(messageInput);
         add(messageList);
         messageList.setWidthFull();
 
+
         Button goBackToHome = new Button("Back to Home");
-        goBackToHome.getElement().setAttribute("class", "btn btn-primary");
+        goBackToHome.getElement().setAttribute("class", "btn btn-dark");
         goBackToHome.addClickListener(e -> {
             UI.getCurrent().navigate("/gamevault/home");
         });
