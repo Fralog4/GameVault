@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gamevault")
+@RequestMapping("/gamevaultController")
 @RequiredArgsConstructor
 public class VideogameController {
     private final VideogameService videogameService;
 
-    //@GetMapping("/videogames")
+    @GetMapping("/videogames")
     public List<Videogame> getAllVideogames() {
         return videogameService.getAllVideogames();
     }

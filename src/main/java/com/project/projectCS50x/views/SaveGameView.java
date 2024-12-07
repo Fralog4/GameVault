@@ -27,9 +27,10 @@ public class SaveGameView  extends VerticalLayout {
     public SaveGameView(VideogameController videogameController) {
         this.videogameController = videogameController;
 
+        this.addClassName("saving-videogameview");
+
         FormLayout formLayout = new FormLayout();
         TextField titleField = new TextField("Title");
-        titleField.getElement().setAttribute("class", "form-control");
         Button goBackToHome = new Button("Back to Home");
         goBackToHome.getElement().setAttribute("class", "btn btn-dark");
         goBackToHome.addClickListener(e -> {
@@ -45,7 +46,6 @@ public class SaveGameView  extends VerticalLayout {
         gameGenre.setPrefixComponent(VaadinIcon.VAADIN_H.create());
         gameGenre.setItems("Action", "Adventure", "RPG", "Sports", "Shooter", "Fight", "Horror", "Platform", "Puzzle", "Racing", "Simulation", "Strategy", "Survival");
         gameGenre.setRequiredIndicatorVisible(true);
-        gameGenre.getElement().setAttribute("class", "form-control");
 
         Select<String> gameStatus = new Select<>();
         gameStatus.setLabel("Game Status");
@@ -55,21 +55,18 @@ public class SaveGameView  extends VerticalLayout {
         gameStatus.setPrefixComponent(VaadinIcon.VAADIN_V.create());
         gameStatus.setItems("In Progress", "Completed", "Dropped", "Replayed", "Planned");
         gameStatus.setRequiredIndicatorVisible(true);
-        gameStatus.getElement().setAttribute("class", "form-control");
 
 
         TextField platformField = new TextField("Platform");
-        platformField.getElement().setAttribute("class", "form-control");
         IntegerField personalRating = new IntegerField("Personal Rating");
-        personalRating.getElement().setAttribute("class", "form-control");
 
         LocalDate now = LocalDate.now(ZoneId.systemDefault());
 
         DatePicker playedDate = new DatePicker("Played Date");
-        playedDate.getElement().setAttribute("class", "form-control");
         playedDate.setRequiredIndicatorVisible(true);
         playedDate.setMax(now.plusDays(60));
         playedDate.setHelperText("Must be within 60 days from today");
+        playedDate.addClassName("form-games");
 
 
         playedDate.setI18n(new DatePicker.DatePickerI18n()
@@ -78,6 +75,8 @@ public class SaveGameView  extends VerticalLayout {
                 .setMaxErrorMessage("Too late, choose another date"));
 
         formLayout.add(titleField, platformField, personalRating, gameGenre, playedDate, gameStatus);
+        formLayout.addClassName("form-games");
+
         Button saveButton = new Button("Save Videogame");
         saveButton.getElement().setAttribute("class", "btn btn-dark");
         saveButton.getElement().setAttribute("style", "margin-right: 10px");

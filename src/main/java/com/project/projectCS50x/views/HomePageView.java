@@ -23,9 +23,8 @@ public class HomePageView extends AppLayout {
 
     public HomePageView(VideogameController videogameController,
                         ChatController chatController) {
-        this.getElement().setAttribute("theme", "dark")
+        this.getElement().setAttribute("theme", "light")
                 .setAttribute("class", "app-layout");
-        this.getElement().getStyle().setCursor("pointer");
 
 
 
@@ -35,12 +34,13 @@ public class HomePageView extends AppLayout {
         DrawerToggle toggle = new DrawerToggle();
         toggle.setThemeName("navigation-drawer-toggle");
 
-        H1 title = new H1("Welcome to the Home Page!");
+        H1 title = new H1("Welcome Traveller...");
         title.getStyle().set("font-size", "var(--lumo-font-size-l)")
-                .set("font-weight", "bold").set("margin", "0 10px 0 0");
+                .set("font-weight", "bold").set("margin", "0 10px 0 0").set("font-style", "italic");
 
 
         SideNav nav = getSideNav();
+        nav.addClassName("nav");
 
         Scroller scroller = new Scroller(nav);
         scroller.setClassName(LumoUtility.Padding.SMALL);

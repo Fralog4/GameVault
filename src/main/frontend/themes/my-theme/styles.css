@@ -1,14 +1,10 @@
 .app-layout {
-    min-height: 100vh;
-    background-image: url('img/GameVaultTheme.png');
-    background-size: cover;
+    height: 170vh;
+    background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('img/home.jpg');
+    background-size: cover !important;
     background-repeat: no-repeat;
     background-position: center center;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 30px 10px;
 }
 
 .homeChat{
@@ -29,7 +25,6 @@
     margin: 8px 0;
     border-radius: 4px;
     font-weight: bold;
-
 }
 
 .title{
@@ -57,7 +52,7 @@ vaadin-message::part(message){
     font-weight: bold;
 }
 
-#outlet{
+.videogames-view{
     background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('img/VideoGameList.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -72,4 +67,25 @@ vaadin-grid::part(row){
 .videogameGrid {
     min-height: 90vh;
     opacity: 0.5;
+}
+
+label{
+    color: #f3b600;
+    font-weight: bold;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.saving-videogameview{
+    background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('img/VideoGameStore.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+
+}
+
+.nav{
+    font-style: italic;
+    font-weight:bold;
 }

@@ -14,7 +14,7 @@ public class VideogamesView extends Div {
     private final VideogameController videogameController;
     public VideogamesView(VideogameController videogameController) {
         this.videogameController = videogameController;
-        this.getElement().setAttribute("class", "videogamesView");
+        this.addClassName("videogames-view");
         Grid<Videogame> videogameGrid = new Grid<>(Videogame.class, false); // false for read-only>
         videogameGrid.addColumn(Videogame::getTitle).setHeader("Title");
         videogameGrid.addColumn(Videogame::getGenre).setHeader("Genre");
