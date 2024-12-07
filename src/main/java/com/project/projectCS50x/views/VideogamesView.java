@@ -2,29 +2,12 @@ package com.project.projectCS50x.views;
 
 import com.project.projectCS50x.controller.VideogameController;
 import com.project.projectCS50x.model.Videogame;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
-import com.vaadin.flow.component.applayout.AppLayout;
-import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.Scroller;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.sidenav.SideNav;
-import com.vaadin.flow.component.sidenav.SideNavItem;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
-
-import java.util.List;
 
 @Route("/gamevault/videogames")
 public class VideogamesView extends Div {
@@ -58,20 +41,7 @@ public class VideogamesView extends Div {
         });
         add(goBackToHome);
 
-//        refreshVideogames();
-
     }
-
-//    private HorizontalLayout getHorizontalNavigation() {
-//
-//        HorizontalLayout navigation = new HorizontalLayout();
-//        navigation.setSpacing(true);
-//        navigation.setWidthFull();
-//        navigation.setAlignItems(FlexComponent.Alignment.CENTER);
-//
-//        return navigation;
-//    }
-
 
 //    private void refreshVideogames() {
 //        UI.getCurrent().getPage().reload();
@@ -79,9 +49,6 @@ public class VideogamesView extends Div {
 //    }
 
 
-
-
-
-    }
+}
 
 

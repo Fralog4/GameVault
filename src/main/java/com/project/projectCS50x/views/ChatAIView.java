@@ -9,15 +9,15 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.messages.MessageInput;
 import com.vaadin.flow.component.messages.MessageList;
 import com.vaadin.flow.component.messages.MessageListItem;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import org.springframework.messaging.Message;
-
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Route("/gamevault/ai/generate")
 public class ChatAIView extends Div {
@@ -28,7 +28,6 @@ public class ChatAIView extends Div {
     private final List<Message> receivedMessages = new ArrayList<>();
     private final MessageInput messageInput;
     private final List<Div> messageHistory = new ArrayList<>();
-//    private final VerticalLayout messageHistoryLayout = new VerticalLayout();
     private final MessageList messageList = new MessageList();
 
 

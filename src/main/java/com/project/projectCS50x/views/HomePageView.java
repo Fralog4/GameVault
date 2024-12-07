@@ -6,7 +6,6 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.Scroller;
@@ -35,13 +34,6 @@ public class HomePageView extends AppLayout {
 
         DrawerToggle toggle = new DrawerToggle();
         toggle.setThemeName("navigation-drawer-toggle");
-//        contentDiv.getStyle().set("background-image", "url('my-background.jpg')");
-//        Div home = new Div();
-//        home.getStyle().set("background-image",
-//                "url('https://www.rollingstone.com/wp-content/uploads/2024/04/pip-ft.jpg?w=1600&h=900&crop=1')");
-//        addToDrawer(home);
-
-
 
         H1 title = new H1("Welcome to the Home Page!");
         title.getStyle().set("font-size", "var(--lumo-font-size-l)")

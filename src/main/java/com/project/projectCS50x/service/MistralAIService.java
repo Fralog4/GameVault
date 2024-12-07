@@ -1,5 +1,5 @@
 package com.project.projectCS50x.service;
-import org.springframework.ai.chat.prompt.SystemPromptTemplate;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;

@@ -11,14 +11,12 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.select.Select;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.component.textfield.IntegerField;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.HashMap;
-import java.util.Map;
 
 
 @Route("/gamevault/uploadvideogame")
@@ -64,8 +62,7 @@ public class SaveGameView  extends VerticalLayout {
         platformField.getElement().setAttribute("class", "form-control");
         IntegerField personalRating = new IntegerField("Personal Rating");
         personalRating.getElement().setAttribute("class", "form-control");
-//        IntegerField id = new IntegerField("Id");
-//        id.getElement().setAttribute("class", "form-control");
+
         LocalDate now = LocalDate.now(ZoneId.systemDefault());
 
         DatePicker playedDate = new DatePicker("Played Date");
@@ -87,7 +84,6 @@ public class SaveGameView  extends VerticalLayout {
         saveButton.getElement().setAttribute("type", "submit");
         saveButton.addClickListener(e -> {
             Videogame videogame = new Videogame();
-//            videogame.setId(Long.valueOf(id.getValue()));
             videogame.setTitle(titleField.getValue());
             videogame.setPlatform(platformField.getValue());
             videogame.setPersonalRating(personalRating.getValue());
@@ -95,7 +91,6 @@ public class SaveGameView  extends VerticalLayout {
             videogame.setPlayedDate(playedDate.getValue());
             videogame.setGenre(GameGenre.valueOf(gameGenre.getValue().toUpperCase()));
 
-//            videogame.setGamestatus(Gamestatus.valueOf(gameStatus.getValue().toUpperCase()));
 
             videogameController.saveVideogame(videogame);
             //refresh the list
