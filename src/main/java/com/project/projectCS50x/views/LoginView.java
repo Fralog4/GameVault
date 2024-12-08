@@ -11,7 +11,8 @@ import com.vaadin.flow.router.Route;
 public class LoginView extends Div {
 
     public LoginView() {
-        this.addClassName("login-view");
+        addClassName("login-view");
+
         LoginI18n i18n = LoginI18n.createDefault();
 
         LoginI18n.Header i18nHeader = new LoginI18n.Header();
@@ -19,13 +20,14 @@ public class LoginView extends Div {
         i18nHeader.setDescription("Please Log In");
         i18n.setHeader(i18nHeader);
 
-        LoginI18n.Form i18nForm = i18n.getForm();
-        i18nForm.setTitle("Login");
-        i18nForm.setUsername("Username");
-        i18nForm.setPassword("Password");
-        i18nForm.setSubmit("Log In");
-        i18nForm.setForgotPassword("Did you forgot password?");
-        i18n.setForm(i18nForm);
+        LoginI18n.Form loginForm = i18n.getForm();
+        loginForm.setTitle("Login");
+        loginForm.setUsername("Username");
+        loginForm.setPassword("Password");
+        loginForm.setSubmit("Log In");
+        loginForm.setForgotPassword("Did you forgot password?");
+
+        i18n.setForm(loginForm);
 
         LoginI18n.ErrorMessage i18nErrorMessage = i18n.getErrorMessage();
         i18nErrorMessage.setTitle("Wrong password");
@@ -40,6 +42,7 @@ public class LoginView extends Div {
         loginOverlay.setAction("login");
         loginOverlay.setOpened(true);
         loginOverlay.getElement().setAttribute("no-autofocus", "");
+
         add(loginOverlay);
 
 
