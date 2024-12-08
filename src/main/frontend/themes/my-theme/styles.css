@@ -89,3 +89,27 @@ label{
     font-style: italic;
     font-weight:bold;
 }
+
+vaadin-login-overlay-wrapper::part(content){
+    background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),
+    url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/82b3ee85-bc33-4054-acdd-6539c70ab9ff/d9jh3s7-07e7909a-f96d-4291-b557-27e4bb89dab2.jpg/v1/fill/w_976,h_818,q_70,strp/sole_survivor_by_lei_ren_d9jh3s7-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAwMCIsInBhdGgiOiJcL2ZcLzgyYjNlZTg1LWJjMzMtNDA1NC1hY2RkLTY1MzljNzBhYjlmZlwvZDlqaDNzNy0wN2U3OTA5YS1mOTZkLTQyOTEtYjU1Ny0yN2U0YmI4OWRhYjIuanBnIiwid2lkdGgiOiI8PTExOTMifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.6r30UV9pom3K3HjTBpqXOsG9g4Z-RqGw740qHtiFCnQ');
+    background-size: cover;
+    background-position: center;
+}
+
+vaadin-login-overlay-wrapper::part(brand){
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    font-style: italic;
+}
+
+vaadin-login-form-wrapper::part(form-title){
+    color: orange;
+    font-weight: bold;
+    font-style: italic;
+}
+vaadin-login-overlay-wrapper::part(card){
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 500px;
+
+}
