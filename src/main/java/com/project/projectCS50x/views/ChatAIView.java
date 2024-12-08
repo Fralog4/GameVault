@@ -2,7 +2,6 @@ package com.project.projectCS50x.views;
 
 import com.project.projectCS50x.controller.ChatController;
 import com.project.projectCS50x.service.MistralAIService;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
@@ -10,16 +9,15 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.messages.MessageInput;
 import com.vaadin.flow.component.messages.MessageList;
 import com.vaadin.flow.component.messages.MessageListItem;
-import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.theme.lumo.Lumo;
+import jakarta.annotation.security.PermitAll;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Arrays;
 
+@PermitAll
 @Route("/gamevault/ai/generate")
 public class ChatAIView extends Div {
 

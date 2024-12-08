@@ -2,27 +2,34 @@ package com.project.projectCS50x.views;
 
 import com.project.projectCS50x.controller.ChatController;
 import com.project.projectCS50x.controller.VideogameController;
+import com.project.projectCS50x.security.SecurityService;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import jakarta.annotation.security.PermitAll;
 
-
-@Route("gamevault/home")
+@PermitAll
+@Route("/gamevault/home")
 public class HomePageView extends AppLayout {
 
     private final VideogameController videogameController;
     private final ChatController chatController;
+    private final SecurityService securityService;
 
     public HomePageView(VideogameController videogameController,
-                        ChatController chatController) {
+                        ChatController chatController, SecurityService securityService) {
+        this.securityService = securityService;
+        createHeader();
         this.getElement().setAttribute("theme", "light")
                 .setAttribute("class", "app-layout");
 
@@ -73,5 +80,27 @@ public class HomePageView extends AppLayout {
 
         nav.addItem(dashboardGames, chat);
         return nav;
+    }
+
+    private void createHeader() {
+        H1 logo = new H1("Vaadin CRM");
+        logo.addClassNames(
+                LumoUtility.FontSize.LARGE,
+                LumoUtility.Margin.MEDIUM);
+
+        String u = securityService.getAuthenticatedUser().getUsername();
+        Button logout = new Button("Log out " + u, e -> securityService.logout());
+
+        var header = new HorizontalLayout(new DrawerToggle(), logo, logout);
+
+        header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
+        header.expand(logo);
+        header.setWidthFull();
+        header.addClassNames(
+                LumoUtility.Padding.Vertical.NONE,
+                LumoUtility.Padding.Horizontal.MEDIUM);
+
+        addToNavbar(header);
+
     }
 }

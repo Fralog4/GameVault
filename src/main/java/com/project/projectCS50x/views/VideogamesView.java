@@ -7,7 +7,9 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.security.PermitAll;
 
+@PermitAll
 @Route("/gamevault/videogames")
 public class VideogamesView extends Div {
 

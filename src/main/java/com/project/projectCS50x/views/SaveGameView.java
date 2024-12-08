@@ -14,11 +14,12 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.security.PermitAll;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 
-
+@PermitAll
 @Route("/gamevault/uploadvideogame")
 public class SaveGameView  extends VerticalLayout {
 
