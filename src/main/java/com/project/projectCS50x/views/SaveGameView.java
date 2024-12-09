@@ -44,22 +44,50 @@ public class SaveGameView  extends VerticalLayout {
         gameGenre.setHelperText("Choose one");
         gameGenre.setPlaceholder("Choose a genre");
         gameGenre.setTooltipText("Tooltip text");
-        gameGenre.setPrefixComponent(VaadinIcon.VAADIN_H.create());
+        gameGenre.setPrefixComponent(VaadinIcon.TOUCH.create());
         gameGenre.setItems("Action", "Adventure", "RPG", "Sports", "Shooter", "Fight", "Horror", "Platform", "Puzzle", "Racing", "Simulation", "Strategy", "Survival");
         gameGenre.setRequiredIndicatorVisible(true);
+        gameGenre.setI18n(new Select.SelectI18n()
+                .setRequiredErrorMessage("Did you forget something didn't you? "));
 
         Select<String> gameStatus = new Select<>();
         gameStatus.setLabel("Game Status");
         gameStatus.setHelperText("Choose one");
         gameStatus.setPlaceholder("Choose a status");
         gameStatus.setTooltipText("Tooltip text");
-        gameStatus.setPrefixComponent(VaadinIcon.VAADIN_V.create());
+        gameStatus.setPrefixComponent(VaadinIcon.TOUCH.create());
         gameStatus.setItems("In Progress", "Completed", "Dropped", "Replayed", "Planned");
         gameStatus.setRequiredIndicatorVisible(true);
+        gameStatus.setI18n(new Select.SelectI18n()
+                .setRequiredErrorMessage("Did you forget something didn't you? "));
 
 
-        TextField platformField = new TextField("Platform");
+        Select<String> platformField = new Select<>();
+        platformField.setLabel("Platform");
+        platformField.setHelperText("Choose one");
+        platformField.setPlaceholder("Choose a platform");
+        platformField.setTooltipText("Tooltip text");
+        platformField.setPrefixComponent(VaadinIcon.TOUCH.create());
+        platformField.setItems("PC", "Xbox", "Playstation", "Nintendo","Other");
+        platformField.setRequiredIndicatorVisible(true);
+        platformField.setI18n(new Select.SelectI18n()
+                .setRequiredErrorMessage("Did you forget something didn't you? "));
+
         IntegerField personalRating = new IntegerField("Personal Rating");
+
+        personalRating.setHelperText("How much did you enjoyed from 1 to 10? ");
+        personalRating.setRequiredIndicatorVisible(true);
+        personalRating.setMin(1);
+        personalRating.setMax(10);
+        personalRating.setStepButtonsVisible(true);
+        personalRating.setClearButtonVisible(true);
+        personalRating.setPrefixComponent(VaadinIcon.STAR.create());
+        personalRating.setI18n(new IntegerField.IntegerFieldI18n()
+                .setRequiredErrorMessage("Did you forget something didn't you? ")
+                .setBadInputErrorMessage("Hey put a number here!")
+                .setMinErrorMessage("0? Really?")
+                .setMaxErrorMessage("10 is the limit fellow!"));
+
 
         LocalDate now = LocalDate.now(ZoneId.systemDefault());
 
