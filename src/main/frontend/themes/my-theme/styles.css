@@ -110,6 +110,9 @@ vaadin-login-form-wrapper::part(form-title){
 }
 vaadin-login-overlay-wrapper::part(card){
     background-color: rgba(0, 0, 0, 0.5);
-    width: 500px;
+    min-width: 650px
+}
 
+vaadin-login-overlay-wrapper::part(form){
+    padding:0;
 }

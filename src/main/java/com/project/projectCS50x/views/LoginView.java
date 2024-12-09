@@ -14,6 +14,8 @@ public class LoginView extends Div {
 
     public LoginView() {
 
+        addClassName("login-view");
+
         LoginI18n i18n = LoginI18n.createDefault();
 
         setSizeFull();
@@ -45,6 +47,8 @@ public class LoginView extends Div {
         loginOverlay.setAction("login");
         loginOverlay.setOpened(true);
         loginOverlay.getElement().setAttribute("theme", "light");
+
+        loginOverlay.addClassName("login-overlay");
 
         add(loginOverlay);
 
