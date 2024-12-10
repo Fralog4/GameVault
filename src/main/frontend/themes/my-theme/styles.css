@@ -27,6 +27,20 @@
     font-weight: bold;
 }
 
+vaadin-message-input > vaadin-text-area{
+
+   font-style: italic;
+   color: orange;
+   text-shadow:
+          -1px -1px 0 #000,
+           1px -1px 0 #000,
+          -1px  1px 0 #000,
+           1px  1px 0 #000;
+
+
+}
+
+
 .title{
     color: white;
     font-size: 40px;
@@ -62,12 +76,26 @@ vaadin-message::part(message){
 vaadin-grid::part(row){
     font-weight: bold;
     color: #c13500;
+    font-style: italic;
 }
 
 .videogameGrid {
     min-height: 90vh;
     opacity: 0.5;
 }
+
+vaadin-grid::part(header-cell){
+   font-size: 25px;
+   color: yellow;
+     text-shadow:
+       -1px -1px 0 #000,
+        1px -1px 0 #000,
+       -1px  1px 0 #000,
+        1px  1px 0 #000;
+
+}
+
+
 
 label{
     color: #f3b600;
@@ -82,7 +110,27 @@ label{
     background-size: cover;
     background-position: center center;
     min-height: 100vh;
+    font-size: 15px;
+    text-shadow:
+      -1px -1px 0 #000,
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000;
+}
 
+vaadin-select-item{
+    color: orange;
+}
+
+vaadin-select::part(helper-text){
+    color: white;
+}
+vaadin-integer-field::part(helper-text){
+    color: white;
+}
+
+vaadin-date-picker::part(helper-text){
+    color: white;
 }
 
 .nav{
@@ -115,4 +163,19 @@ vaadin-login-overlay-wrapper::part(card){
 
 vaadin-login-overlay-wrapper::part(form){
     padding:0;
+}
+
+.hello-span {
+  color: orange;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 1px;
+  text-shadow:
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px  1px 0 #000,
+      1px  1px 0 #000;
 }

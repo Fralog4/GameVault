@@ -6,6 +6,7 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.messages.MessageInput;
 import com.vaadin.flow.component.messages.MessageList;
 import com.vaadin.flow.component.messages.MessageListItem;
@@ -35,7 +36,10 @@ public class ChatAIView extends Div {
 
         this.getElement().setAttribute("class", "homeChat");
 
-        add(new H1("Hey I'm Victor, welcome my friend!"));
+        Span span = new Span();
+        span.setText("Hey I'm Victor, welcome to the Mojave WasteLand, my friend!");
+        span.getElement().setAttribute("class", "hello-span");
+        add(span);
 
         messageInput = new MessageInput(event -> sendMessage(event.getValue()));
         messageInput.getElement().setAttribute("class", "form-control");
