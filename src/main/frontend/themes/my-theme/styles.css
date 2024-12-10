@@ -132,6 +132,30 @@ vaadin-integer-field::part(helper-text){
 vaadin-date-picker::part(helper-text){
     color: white;
 }
+vaadin-text-field::part(input-field){
+   color: orange;
+   font-style: italic;
+   text-shadow:
+          -1px -1px 0 #000,
+           1px -1px 0 #000,
+          -1px  1px 0 #000,
+           1px  1px 0 #000;
+}
+
+vaadin-select-item{
+    background-color: rgba(0, 0, 0, 0.5);
+       text-shadow:
+              -1px -1px 0 #000,
+               1px -1px 0 #000,
+              -1px  1px 0 #000,
+               1px  1px 0 #000;
+
+    font-style: italic;
+}
+
+vaadin-select-item[selected]{
+    background-color: orange;
+}
 
 .nav{
     font-style: italic;
