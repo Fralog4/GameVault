@@ -44,13 +44,34 @@ Use your Mistral API key, it's free :P .
 
 **Mistral AI** Mistral AI is an artificial intelligence library that provides various AI functionalities. It is used in this project for the implementation of an AI-powered chat bot.
 
-N.B: in order to use Mistral AI in your project, you need to add the following dependency to your `pom.xml` file:
+`N.B:` in order to use Mistral AI in your project, you need to add the base-url in combo with the API key which are not provided in this repo.
 
 
 **Jakarta Persistence API (JPA):** For ORM mapping and database interaction.
 
+
+## Setup and Running the Application
+
+### Prerequisites
+- Java 11 or higher
+- Maven
+- Mistral AI API
+- Database connection
+
+### Steps
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd GameVault
+
+2. ***Build the project:***
+   ```bash
+   mvn clean install
+3. **Run the application:**
+   ```bash
+   mvn spring-boot:run
+
+
 ## Contributing
 
 Feel free to contribute on this project.
-
-## License
